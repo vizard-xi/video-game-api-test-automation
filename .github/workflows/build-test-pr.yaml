@@ -23,3 +23,17 @@ jobs:
 
       - name: Run tests
         run: ./gradlew test --info
+
+      - name: Generate Allure Reports
+        run: ./gradlew allureReport
+
+######## couldn't fix service on GIT
+#      - name: Serve Allure Reports
+#        run: ./gradlew allureServe
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: build/allure-results
+
